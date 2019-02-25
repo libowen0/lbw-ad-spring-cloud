@@ -10,11 +10,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ad-getway</artifactId>
+    <artifactId>ad-gateway</artifactId>
     <packaging>jar</packaging>
 
-    <name>ad-getway Maven Webapp</name>
-    <description>ad-getway</description>
+    <name>ad-gateway</name>
+    <description>ad-gateway</description>
 
     <dependencies>
         <!--
