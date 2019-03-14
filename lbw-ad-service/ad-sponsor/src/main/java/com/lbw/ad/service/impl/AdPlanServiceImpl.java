@@ -32,9 +32,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AdPlanServiceImpl implements IAdPlanService {
 
-    final AdPlanRepository planRepository;
+    private final AdPlanRepository planRepository;
 
-    final AdUserRepository userRepository;
+    private final AdUserRepository userRepository;
 
     @Autowired
     public AdPlanServiceImpl(AdPlanRepository planRepository, AdUserRepository userRepository) {
@@ -50,17 +50,20 @@ public class AdPlanServiceImpl implements IAdPlanService {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
+        // 判断用户存在
         Optional<AdUser> adUser = userRepository.findById(request.getUserId());
         if (!adUser.isPresent()) {
             throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
         }
 
+        // 判断推广计划存在
         AdPlan oldPlan = planRepository.findByUserIdAndPlanName(request.getUserId(), request.getPlanName());
         if (oldPlan != null) {
             throw new AdException(Constants.ErrorMsg.SAME_NAME_PLAN_ERROR);
         }
 
-        AdPlan newAdPlan = planRepository.save(new AdPlan(request.getUserId(), request.getPlanName(), CommonUtils.parseStringDate(request.getStartDate()), CommonUtils.parseStringDate(request.getEndDate())));
+        AdPlan newAdPlan = planRepository.save(new AdPlan(request.getUserId(), request.getPlanName(),
+                CommonUtils.parseStringDate(request.getStartDate()), CommonUtils.parseStringDate(request.getEndDate())));
         return new AdPlanResponse(newAdPlan.getId(), newAdPlan.getPlanName());
     }
 
@@ -69,7 +72,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
         if (!request.validate()) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
-        return planRepository.findAllByIdInAAndUserId(request.getIds(), request.getUserId());
+        return planRepository.findAllByIdInAndUserId(request.getIds(), request.getUserId());
     }
 
     @Transactional
@@ -105,7 +108,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
         AdPlan plan = planRepository.findByIdAndUserId(request.getId(), request.getUserId());
-        if (plan == null){
+        if (plan == null) {
             throw new AdException(Constants.ErrorMsg.CAN_NOT_FIND_RECORD);
         }
         plan.setPlanStatus(CommonStatus.INVALID.getStatus());

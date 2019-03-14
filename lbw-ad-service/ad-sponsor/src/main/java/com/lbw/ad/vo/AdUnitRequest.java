@@ -17,7 +17,6 @@ public class AdUnitRequest {
 
     private Long planId;
     private String unitName;
-
     private Integer positionType;
     private Long budget;
 

@@ -16,6 +16,9 @@ public class AdUnitItRequest {
 
     private List<UnitIt> unitIts;
 
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class UnitIt{
         private Long unitId;
         private String itTag;
