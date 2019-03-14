@@ -16,9 +16,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 13:23 Description:
+ * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 13:23
+ * Description: 推广单元表，一个推广计划中有多个推广单元
  */
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,12 +31,22 @@ public class AdUnit {
     @Column(name = "id",nullable = false)
     private Long id;
 
+    /**
+     * 关联推广计划ID
+     */
     @Column(name = "plan_id",nullable = false)
     private Long planId;
 
+    /**
+     * 推广单元名称
+     */
     @Column(name = "unit_name",nullable = false)
     private String unitName;
 
+    /**
+     * 有效状态,无效状态
+     * 默认有效状态
+     */
     @Column(name="unit_status",nullable = false)
     private Integer unitStatus;
 

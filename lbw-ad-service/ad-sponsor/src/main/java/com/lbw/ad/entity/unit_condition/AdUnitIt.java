@@ -12,7 +12,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 13:31 Description:
+ * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 13:31
+ * Description: 兴趣限制，一个推广单元对应多个限制
  */
 
 @Data

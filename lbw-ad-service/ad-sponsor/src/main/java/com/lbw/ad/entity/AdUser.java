@@ -16,9 +16,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 12:48 Description:
+ * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 12:48
+ * Description: 系统用户表
  */
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,6 +37,10 @@ public class AdUser {
     @Column(name = "token",nullable = false)
     private String token;
 
+    /**
+     * 有效状态,无效状态
+     * 默认有效状态
+     */
     @Column(name = "user_status",nullable = false)
     private Integer userStatus;
 

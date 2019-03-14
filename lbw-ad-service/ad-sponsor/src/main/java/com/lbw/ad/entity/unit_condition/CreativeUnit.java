@@ -12,7 +12,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 16:57 Description:
+ * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 16:57
+ * Description: 创意表和推广单元为多对多关系
  */
 
 @Data

@@ -12,9 +12,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 13:31 Description:
+ * Created with IntelliJ IDEA. User: lbw Date: 2019/2/25 Time: 13:31
+ * Description: 地区限制，一个推广单元对应多个限制
  */
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,9 +30,15 @@ public class AdUnitDistrict {
     @Column(name = "unit_id",nullable = false)
     private Long unitId;
 
+    /**
+     * 省
+     */
     @Column(name = "province",nullable = false)
     private String province;
 
+    /**
+     * 市
+     */
     @Column(name = "city",nullable = false)
     private String city;
 
