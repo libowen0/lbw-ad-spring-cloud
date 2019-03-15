@@ -1,0 +1,41 @@
+server:
+  port: 7001
+  servlet:
+    context-path: /ad-search
+
+spring:
+  application:
+    name: eureka-client-ad-search
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/ad_data?autoReconnect=true&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: libowen123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # tomcat的数据库连接池
+    tomcat:
+      max-active: 4
+      min-idle: 2
+      initial-size: 2
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+# 开启feigh调用
+feign:
+  hystrix:
+    enabled: true
+
+# 暴露监控信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
